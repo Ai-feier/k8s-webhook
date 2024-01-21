@@ -20,6 +20,18 @@ spec:
         - image: aifeierwithinmkt/auth-github-webhook
           name: auth-github-webhook
           resources: {}
+          readinessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            tcpSocket:
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            failureThreshold: 3
           ports:
             - containerPort: 3000
 ---
